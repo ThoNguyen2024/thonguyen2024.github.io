@@ -1,76 +1,142 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Find Numbers</title>
-</head>
+<style>
+table,th,td {
+  border:1px solid black;
+  text-align: center;
+}
+</style>
 <body>
-    <h1>Find Numbers</h1>
-    
-    <label for="txtNumbers">Enter Numbers (comma-separated):</label>
-    <input type="text" id="txtNumbers" />
-    <br />
-
-    <label for="txtTargetSum">Enter Target Sum:</label>
-    <input type="text" id="txtTargetSum" />
-    <br />
-
-    <button onclick="findNumbers()">Find Result</button>
-    <br />
-
-    <label for="lstResult">Result:</label>
-    <ul id="lstResult"></ul>
-
-    <script>
-        function findNumbers() {
-            var numbersInput = document.getElementById('txtNumbers');
-            var targetSumInput = document.getElementById('txtTargetSum');
-            var resultContainer = document.getElementById('lstResult');
-
-            // Lấy và chuyển đổi dữ liệu nhập từ người dùng
-            var numbers = numbersInput.value.split(',').map(Number);
-            var targetSum = parseInt(targetSumInput.value);
-
-            // Thực hiện thuật toán tìm kiếm
-            var result = findNumbersWithSum(numbers, targetSum);
-
-            // Hiển thị kết quả trên giao diện web
-            resultContainer.innerHTML = '';
-            result.forEach(function (num) {
-                var listItem = document.createElement('li');
-                listItem.textContent = num;
-                resultContainer.appendChild(listItem);
-            });
-        }
-
-        function findNumbersWithSum(numbers, targetSum) {
-            var result = [];
-
-            // Sắp xếp mảng để tối ưu hóa thuật toán
-            numbers.sort(function(a, b) {
-                return a - b;
-            });
-
-            function backtrack(startIndex, currentSum, currentCombination) {
-                if (currentSum === targetSum) {
-                    result.push(currentCombination.slice());
-                    return;
-                }
-
-                for (var i = startIndex; i < numbers.length; i++) {
-                    if (currentSum + numbers[i] <= targetSum) {
-                        currentCombination.push(numbers[i]);
-                        backtrack(i + 1, currentSum + numbers[i], currentCombination);
-                        currentCombination.pop();
-                    }
-                }
-            }
-
-            backtrack(0, 0, []);
-
-            return result;
-        }
-    </script>
+	<table style="width:100%">
+		<tr>
+			<td style="width:20%"><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button1" onclick="Check(1)">Adrenalin</button></td>
+			<td style="width:20%"><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button2" onclick="Check(2)">Acyclovir</button></td>
+			<td style="width:20%"><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button3" onclick="Check(3)">Ampicillin</button></td>
+			<td style="width:20%"><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button4" onclick="Check(4)">Ampicillin-Sulbactam</button></td>
+			<td style="width:20%"><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button5" onclick="Check(5)">Calcium chloride</button></td>
+		</tr>
+		<tr>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button6" onclick="Check(6)">Calcium gluconate</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button7" onclick="Check(7)">Cefazolin</button></td>		
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button8" onclick="Check(8)">Cefotaxime</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button9" onclick="Check(9)">Cefepime</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button10" onclick="Check(10)">Ceftazidime</button></td>
+		</tr>
+		<tr>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button11" onclick="Check(11)">Ceftriaxone</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button12" onclick="Check(12)">Ciprofloxacin</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button13" onclick="Check(13)">Clindamycin</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button14" onclick="Check(14)">Cloxacillin</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button15" onclick="Check(15)">Colistin</button></td>
+		</tr>
+		<tr>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button16" onclick="Check(16)">Cotrimoxazole</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button17" onclick="Check(17)">Cyclosporine</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button18" onclick="Check(18)">Diphenhydramine</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button19" onclick="Check(19)">Dobutamine</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button20" onclick="Check(20)">Dopamine</button></td>
+		</tr>
+		<tr>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button21" onclick="Check(21)">Fentanyl</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button22" onclick="Check(22)">Fluconazole</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button23" onclick="Check(23)">Furosemide</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button24" onclick="Check(24)">Heparin</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button25" onclick="Check(25)">Hydrocortisone sodium succinate</button></td>
+		</tr>
+		<tr>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button26" onclick="Check(26)">Imipenem</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button27" onclick="Check(27)">Insulin regular human</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button28" onclick="Check(28)">Kali chlorid (Potassium chloride)</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button29" onclick="Check(29)">Ketamine</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button30" onclick="Check(30)">Lidocaine</button></td>
+		</tr>
+		<tr>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button31" onclick="Check(31)">Linezolid</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button32" onclick="Check(32)">Magnesium sulfate</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button33" onclick="Check(33)">Meropenem</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button34" onclick="Check(34)">Methylprednisolone sodium succinate</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button35" onclick="Check(35)">Midazolam</button></td>
+		</tr>
+		<tr>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button36" onclick="Check(36)">Milrinone</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button37" onclick="Check(37)">Morphine</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button38" onclick="Check(38)">Sodium bicarbonate</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button39" onclick="Check(39)">Penicillin G sodium</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button40" onclick="Check(40)">Piperacillin-Tazobactam</button></td>
+		</tr>
+		<tr>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button41" onclick="Check(41)">Plasmalyte</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button42" onclick="Check(42)">Propofol</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button43" onclick="Check(43)">Ranitidine</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button44" onclick="Check(44)">Vancomycin</button></td>
+			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button45" onclick="Check(45)">Vitamin K</button></td>
+		</tr>
+	</table>
 </body>
-</html>
+<script>
+	function Check(value) 
+	{
+		let config = 
+		[
+			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+		]
+		switch(value) {
+			case 1: config = [3,1,2,1,0,0,0,0,1,0,0,1,0,1,0,1,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,1,0,0,0,2,0,0,0,0,0,0,1];break;
+			case 2: config = [1,3,0,2,1,0,0,0,2,0,0,1,0,0,1,0,1,1,1,2,1,0,0,0,0,0,0,0,2,1,0,0,2,0,1,1,1,0,0,2,0,1,0,0,1];break;
+			case 3: config = [2,0,3,1,2,1,1,1,1,1,1,2,0,1,1,2,0,2,2,2,0,2,0,0,1,1,0,0,2,1,0,0,1,1,2,0,0,1,1,1,1,0,1,0,0];break;
+			case 4: config = [1,2,1,3,1,1,1,1,0,1,1,2,1,1,1,2,1,1,2,1,1,1,1,1,2,1,1,1,2,1,0,1,1,2,2,0,1,1,1,1,1,1,1,1,1];break;
+			case 5: config = [0,1,2,1,3,0,2,1,1,2,2,1,0,1,0,1,0,1,2,0,0,0,0,0,1,1,0,0,1,0,0,2,1,1,0,0,0,2,0,0,1,2,0,0,1];break;
+			case 6: config = [0,0,1,1,0,3,0,0,0,0,2,0,0,0,0,2,0,0,2,0,0,2,0,0,1,1,0,0,1,0,0,0,1,2,0,0,0,2,0,0,1,0,0,0,0];break;
+			case 7: config = [0,0,1,1,2,0,3,2,1,0,0,1,0,1,1,2,0,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,1,0,2,0];break;
+			case 8: config = [0,0,1,1,1,0,2,3,1,2,0,1,0,0,1,2,0,2,1,0,1,2,0,0,0,0,0,0,1,1,0,0,1,2,1,1,0,2,0,1,1,1,0,2,0];break;
+			case 9: config = [1,2,1,0,1,0,1,1,3,1,1,2,1,1,1,0,1,2,1,1,1,0,0,1,0,0,0,1,0,1,0,2,1,0,2,0,1,0,1,0,0,1,0,1,1];break;
+			case 10:config = [0,0,1,1,2,0,0,2,1,3,0,0,0,0,0,2,0,2,1,0,0,2,0,0,0,0,0,0,0,0,0,0,1,0,2,0,0,0,0,1,0,0,0,2,0];break;
+			case 11:config = [0,0,1,1,2,2,0,0,1,0,3,1,2,0,1,2,0,2,2,0,0,2,0,0,0,2,0,0,1,0,0,2,1,0,0,0,0,0,0,1,1,1,0,2,0];break;
+			case 12:config = [1,1,2,2,1,0,1,1,2,0,1,3,2,2,1,1,1,0,0,0,1,1,2,2,2,1,1,0,1,0,0,2,2,2,0,0,1,2,1,2,0,2,0,0,1];break;
+			case 13:config = [0,0,0,1,0,0,0,0,1,0,2,2,3,0,1,1,2,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0];break;
+			case 14:config = [1,0,1,1,1,0,1,0,1,0,0,2,0,3,0,2,0,2,1,0,1,0,0,0,0,1,0,0,1,1,1,0,0,0,1,1,1,0,0,0,0,1,0,1,1];break;
+			case 15:config = [0,1,1,1,0,0,1,1,1,0,1,1,1,0,3,1,1,1,1,1,1,1,0,0,0,0,1,0,1,0,0,1,0,1,1,1,1,1,0,0,1,1,1,0,1];break;
+			case 16:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			case 17:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			case 18:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			case 19:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			case 20:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			case 21:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			case 22:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			case 23:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			case 24:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			case 25:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			case 26:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			case 27:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			case 28:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			case 29:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			case 30:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			case 31:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			case 32:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			case 33:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			case 34:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			case 35:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			case 36:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			case 37:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			case 38:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			case 39:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			case 40:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			case 41:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			case 42:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			case 43:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			case 44:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			case 45:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
+			default:
+				break;
+		}
+		ChangeColor(config);
+	}
+	function ChangeColor(config) 
+	{
+		var colors = ["#00FF00","#FFFF00","#FF0000","#f0f0f0"]
+		for (let i = 0; i < config.length; ++i)
+		{
+			var index = i + 1;
+			var buttonId = "button" + index;
+			document.getElementById(buttonId).style.backgroundColor = colors[config[i]];
+		}
+	}
+</script>
