@@ -1,85 +1,156 @@
 <style>
-table,th,td {
-  border:1px solid black;
-  text-align: center;
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f4f4f4;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+}
+#form_id {
+	background: #fff;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	width: 300px;
+}
+#form_id label {
+	display: block;
+	margin-bottom: 8px;
+	font-weight: bold;
+}
+#form_id input[type="text"],
+#form_id input[type="password"] {
+	width: calc(100% - 20px);
+	padding: 8px 10px;
+	margin-bottom: 20px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+#form_id input[type="button"] {
+	width: 100%;
+	padding: 10px;
+	background-color: #5cb85c;
+	border: none;
+	border-radius: 4px;
+	color: white;
+	font-size: 16px;
+	cursor: pointer;
+}
+#form_id input[type="button"]:hover {
+	background-color: #4cae4c;
+}
+
+#table1 {
+	width: 95%;
+	border-collapse: collapse;
+	display: none;
+	center;
+}
+#table1 td {
+	width: 33.33%;
+}
+#table1 button {
+	height: 100px;
+	width: 100%;
+	font-size: 25px;
+	font-weight: bold;
+	background-color: #4CAF50;
+	color: black;
+	border: none;
+	border-radius: 8px;
+	transition: background-color 0.1s;
+}
+#table1 button:hover {
+	background-color: #45a049;
 }
 </style>
 <body>
-	<table style="width:95%">
+	<div>
+		<form id="form_id" method="post" name="myform">
+			<label for="username">USER:</label>
+			<input type="text" name="username" id="username" placeholder="Enter your username"/>
+			<label for="password">PASS:</label>
+			<input type="password" name="password" id="password" placeholder="Enter your password"/>
+			<input type="button" value="LOGIN" id="submit" onclick="validate()"/>
+		</form>
+	</div>
+	<table id="table1">
 		<tr>
-			<td style="width:30%"><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button1" onclick="Check(1)">Adrenalin</button></td>
-			<td style="width:30%"><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button2" onclick="Check(2)">Acyclovir</button></td>
-			<td style="width:30%"><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button3" onclick="Check(3)">Ampicillin</button></td>
+			<td><button id="button1" onclick="Check(1)">Adrenalin</button></td>
+			<td><button id="button2" onclick="Check(2)">Acyclovir</button></td>
+			<td><button id="button3" onclick="Check(3)">Ampicillin</button></td>
 		</tr>
 		<tr>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button4" onclick="Check(4)">Ampicillin-Sulbactam</button></td>			
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button5" onclick="Check(5)">Calcium chloride</button></td>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button6" onclick="Check(6)">Calcium gluconate</button></td>
+			<td><button id="button4" onclick="Check(4)">Ampicillin-Sulbactam</button></td>			
+			<td><button id="button5" onclick="Check(5)">Calcium chloride</button></td>
+			<td><button id="button6" onclick="Check(6)">Calcium gluconate</button></td>
 		</tr>
 		<tr>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button7" onclick="Check(7)">Cefazolin</button></td>		
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button8" onclick="Check(8)">Cefotaxime</button></td>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button9" onclick="Check(9)">Cefepime</button></td>		
+			<td><button id="button7" onclick="Check(7)">Cefazolin</button></td>		
+			<td><button id="button8" onclick="Check(8)">Cefotaxime</button></td>
+			<td><button id="button9" onclick="Check(9)">Cefepime</button></td>		
 			</tr>
 		<tr>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button10" onclick="Check(10)">Ceftazidime</button></td>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button11" onclick="Check(11)">Ceftriaxone</button></td>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button12" onclick="Check(12)">Ciprofloxacin</button></td>
+			<td><button id="button10" onclick="Check(10)">Ceftazidime</button></td>
+			<td><button id="button11" onclick="Check(11)">Ceftriaxone</button></td>
+			<td><button id="button12" onclick="Check(12)">Ciprofloxacin</button></td>
 		</tr>
 		<tr>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button13" onclick="Check(13)">Clindamycin</button></td>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button14" onclick="Check(14)">Cloxacillin</button></td>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button15" onclick="Check(15)">Colistin</button></td>
+			<td><button id="button13" onclick="Check(13)">Clindamycin</button></td>
+			<td><button id="button14" onclick="Check(14)">Cloxacillin</button></td>
+			<td><button id="button15" onclick="Check(15)">Colistin</button></td>
 		</tr>
 		<tr>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button16" onclick="Check(16)">Cotrimoxazole</button></td>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button17" onclick="Check(17)">Cyclosporine</button></td>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button18" onclick="Check(18)">Diphenhydramine</button></td>
+			<td><button id="button16" onclick="Check(16)">Cotrimoxazole</button></td>
+			<td><button id="button17" onclick="Check(17)">Cyclosporine</button></td>
+			<td><button id="button18" onclick="Check(18)">Diphenhydramine</button></td>
 		</tr>
 		<tr>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button19" onclick="Check(19)">Dobutamine</button></td>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button20" onclick="Check(20)">Dopamine</button></td>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button21" onclick="Check(21)">Fentanyl</button></td>
+			<td><button id="button19" onclick="Check(19)">Dobutamine</button></td>
+			<td><button id="button20" onclick="Check(20)">Dopamine</button></td>
+			<td><button id="button21" onclick="Check(21)">Fentanyl</button></td>
 		</tr>
 		<tr>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button22" onclick="Check(22)">Fluconazole</button></td>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button23" onclick="Check(23)">Furosemide</button></td>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button24" onclick="Check(24)">Heparin</button></td>
+			<td><button id="button22" onclick="Check(22)">Fluconazole</button></td>
+			<td><button id="button23" onclick="Check(23)">Furosemide</button></td>
+			<td><button id="button24" onclick="Check(24)">Heparin</button></td>
 		</tr>
 		<tr>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button25" onclick="Check(25)">Hydrocortisone sodium succinate</button></td>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button26" onclick="Check(26)">Imipenem</button></td>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button27" onclick="Check(27)">Insulin regular human</button></td>
+			<td><button id="button25" onclick="Check(25)">Hydrocortisone sodium succinate</button></td>
+			<td><button id="button26" onclick="Check(26)">Imipenem</button></td>
+			<td><button id="button27" onclick="Check(27)">Insulin regular human</button></td>
 		</tr>
 		<tr>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button28" onclick="Check(28)">Kali chlorid (Potassium chloride)</button></td>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button29" onclick="Check(29)">Ketamine</button></td>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button30" onclick="Check(30)">Lidocaine</button></td>
+			<td><button id="button28" onclick="Check(28)">Kali chlorid (Potassium chloride)</button></td>
+			<td><button id="button29" onclick="Check(29)">Ketamine</button></td>
+			<td><button id="button30" onclick="Check(30)">Lidocaine</button></td>
 		</tr>
 		<tr>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button31" onclick="Check(31)">Linezolid</button></td>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button32" onclick="Check(32)">Magnesium sulfate</button></td>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button33" onclick="Check(33)">Meropenem</button></td>
+			<td><button id="button31" onclick="Check(31)">Linezolid</button></td>
+			<td><button id="button32" onclick="Check(32)">Magnesium sulfate</button></td>
+			<td><button id="button33" onclick="Check(33)">Meropenem</button></td>
 		</tr>
 		<tr>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button34" onclick="Check(34)">Methylprednisolone sodium succinate</button></td>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button35" onclick="Check(35)">Midazolam</button></td>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button36" onclick="Check(36)">Milrinone</button></td>
+			<td><button id="button34" onclick="Check(34)">Methylprednisolone sodium succinate</button></td>
+			<td><button id="button35" onclick="Check(35)">Midazolam</button></td>
+			<td><button id="button36" onclick="Check(36)">Milrinone</button></td>
 		</tr>
 		<tr>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button37" onclick="Check(37)">Morphine</button></td>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button38" onclick="Check(38)">Sodium bicarbonate</button></td>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button39" onclick="Check(39)">Penicillin G sodium</button></td>
+			<td><button id="button37" onclick="Check(37)">Morphine</button></td>
+			<td><button id="button38" onclick="Check(38)">Sodium bicarbonate</button></td>
+			<td><button id="button39" onclick="Check(39)">Penicillin G sodium</button></td>
 		</tr>
 		<tr>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button40" onclick="Check(40)">Piperacillin-Tazobactam</button></td>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button41" onclick="Check(41)">Plasmalyte</button></td>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button42" onclick="Check(42)">Propofol</button></td>
+			<td><button id="button40" onclick="Check(40)">Piperacillin-Tazobactam</button></td>
+			<td><button id="button41" onclick="Check(41)">Plasmalyte</button></td>
+			<td><button id="button42" onclick="Check(42)">Propofol</button></td>
 		</tr>
 		<tr>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button43" onclick="Check(43)">Ranitidine</button></td>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button44" onclick="Check(44)">Vancomycin</button></td>
-			<td><button style="height: 80px;width: 200px;font-size: 20px;font-weight: bold;" id="button45" onclick="Check(45)">Vitamin K</button></td>
+			<td><button id="button43" onclick="Check(43)">Ranitidine</button></td>
+			<td><button id="button44" onclick="Check(44)">Vancomycin</button></td>
+			<td><button id="button45" onclick="Check(45)">Vitamin K</button></td>
 		</tr>
 	</table>
 </body>
@@ -151,4 +222,34 @@ table,th,td {
 			document.getElementById(buttonId).style.backgroundColor = colors[config[i]];
 		}
 	}
+	
+	var attempt = 4; // Variable to count number of attempts.
+	// Below function Executes on click of login button.
+	function validate() 
+	{
+		var username = document.getElementById("username").value;
+		var password = document.getElementById("password").value;
+		var validUserName = ["tuongvivi", "suongsuong", "hanhan"];
+		var validPassword = ["tuongvivi", "suongsuong", "hanhan"];
+		if (validUserName.includes(username) && validPassword.includes(password)) 
+		{
+			alert("Login successfully");
+			document.getElementById("form_id").style.display = 'none';
+			document.getElementById("table1").style.display='block';
+			return false;
+		} 
+		else 
+		{
+			attempt--; // Decrementing by one.
+			alert("You have left " + attempt + " attempt;");
+			// Disabling fields after 3 attempts.
+			if (attempt == 0) 
+			{
+				document.getElementById("username").disabled = true;
+				document.getElementById("password").disabled = true;
+				document.getElementById("submit").disabled = true;
+				return false;
+			}
+		}
+    }
 </script>
