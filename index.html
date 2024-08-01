@@ -9,36 +9,55 @@ body {
 }
 #form_id {
 	background: #fff;
-	padding: 20px;
-	border-radius: 8px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	width: 300px;
+	padding: 10%;
+	padding-left: 5%;
+	padding-right: 5%;
+	border-radius: 5%;
+	box-shadow: 0 0 5% rgba(0, 0, 0, 0.1);
+	width: 80%;
 }
 #form_id label {
 	display: block;
-	margin-bottom: 8px;
+	margin-bottom: 5%;
 	font-weight: bold;
+	font-size: 60px;
 }
 #form_id input[type="text"],
 #form_id input[type="password"] {
-	width: calc(100% - 20px);
-	padding: 8px 10px;
-	margin-bottom: 20px;
+	width: 100%;
+	padding: 5%;
+	margin-bottom: 10%;
 	border: 1px solid #ccc;
-	border-radius: 4px;
+	border-radius: 2%;
 	box-sizing: border-box;
+	font-size: 60px;
 }
 #form_id input[type="button"] {
 	width: 100%;
-	padding: 10px;
+	padding: 5%;
 	background-color: #5cb85c;
 	border: none;
-	border-radius: 4px;
+	border-radius: 2%;
 	color: white;
-	font-size: 16px;
+	font-size: 8%;
 	cursor: pointer;
+	font-size: 80px;
 }
 #form_id input[type="button"]:hover {
+	background-color: #4cae4c;
+}
+#form_id input[type="submit"] {
+	width: 100%;
+	padding: 5%;
+	background-color: #5cb85c;
+	border: none;
+	border-radius: 2%;
+	color: white;
+	font-size: 8%;
+	cursor: pointer;
+	font-size: 80px;
+}
+#form_id input[type="submit"]:hover {
 	background-color: #4cae4c;
 }
 
@@ -67,15 +86,13 @@ body {
 }
 </style>
 <body>
-	<div>
-		<form id="form_id" method="post" name="myform">
-			<label for="username">USER:</label>
-			<input type="text" name="username" id="username" placeholder="Enter your username"/>
-			<label for="password">PASS:</label>
-			<input type="password" name="password" id="password" placeholder="Enter your password"/>
-			<input type="button" value="LOGIN" id="submit" onclick="validate()"/>
-		</form>
-	</div>
+	<form id="form_id" method="post" name="myform">
+		<label for="username">USER:</label>
+		<input type="text" name="username" id="username" placeholder="Enter your username"/>
+		<label for="password">PASS:</label>
+		<input type="password" name="password" id="password" placeholder="Enter your password"/>
+		<input type="button" value="LOGIN" id="submit" onclick="validate()"/>
+	</form>
 	<table id="table1">
 		<tr>
 			<td><button id="button1" onclick="Check(1)">Adrenalin</button></td>
