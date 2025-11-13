@@ -1,272 +1,113 @@
-<style>
-body {
-	font-family: Arial, sans-serif;
-	background-color: #f4f4f4;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin: 0;
-}
-#form_id {
-	background: #fff;
-	padding: 10%;
-	padding-left: 5%;
-	padding-right: 5%;
-	border-radius: 5%;
-	box-shadow: 0 0 5% rgba(0, 0, 0, 0.1);
-	width: 80%;
-}
-#form_id label {
-	display: block;
-	margin-bottom: 5%;
-	font-weight: bold;
-	font-size: 60px;
-}
-#form_id input[type="text"],
-#form_id input[type="password"] {
-	width: 100%;
-	padding: 5%;
-	margin-bottom: 10%;
-	border: 1px solid #ccc;
-	border-radius: 2%;
-	box-sizing: border-box;
-	font-size: 60px;
-}
-#form_id input[type="button"] {
-	width: 100%;
-	padding: 5%;
-	background-color: #5cb85c;
-	border: none;
-	border-radius: 2%;
-	color: white;
-	font-size: 8%;
-	cursor: pointer;
-	font-size: 80px;
-}
-#form_id input[type="button"]:hover {
-	background-color: #4cae4c;
-}
-#form_id input[type="submit"] {
-	width: 100%;
-	padding: 5%;
-	background-color: #5cb85c;
-	border: none;
-	border-radius: 2%;
-	color: white;
-	font-size: 8%;
-	cursor: pointer;
-	font-size: 80px;
-}
-#form_id input[type="submit"]:hover {
-	background-color: #4cae4c;
-}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drinki T - Ăn đúng chất, Uống đúng gu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                'brand-brown': '#5C3A21', // Màu nâu chủ đạo từ menu
+                'brand-red': '#E4002B',   // Màu đỏ logo
+                'brand-cream': '#F5E6CC',
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-brand-cream font-sans">
 
-#table1 {
-	width: 95%;
-	border-collapse: collapse;
-	display: none;
-	center;
-}
-#table1 td {
-	width: 33.33%;
-}
-#table1 button {
-	height: 100px;
-	width: 100%;
-	font-size: 25px;
-	font-weight: bold;
-	background-color: #4CAF50;
-	color: black;
-	border: none;
-	border-radius: 8px;
-	transition: background-color 0.1s;
-}
-#table1 button:hover {
-	background-color: #45a049;
-}
-</style>
-<body>
-	<form id="form_id" method="post" name="myform">
-		<label for="username">USER:</label>
-		<input type="text" name="username" id="username" placeholder="Enter your username"/>
-		<label for="password">PASS:</label>
-		<input type="password" name="password" id="password" placeholder="Enter your password"/>
-		<input type="button" value="LOGIN" id="submit" onclick="validate()"/>
-	</form>
-	<table id="table1">
-		<tr>
-			<td><button id="button1" onclick="Check(1)">Adrenalin</button></td>
-			<td><button id="button2" onclick="Check(2)">Acyclovir</button></td>
-			<td><button id="button3" onclick="Check(3)">Ampicillin</button></td>
-		</tr>
-		<tr>
-			<td><button id="button4" onclick="Check(4)">Ampicillin-Sulbactam</button></td>			
-			<td><button id="button5" onclick="Check(5)">Calcium chloride</button></td>
-			<td><button id="button6" onclick="Check(6)">Calcium gluconate</button></td>
-		</tr>
-		<tr>
-			<td><button id="button7" onclick="Check(7)">Cefazolin</button></td>		
-			<td><button id="button8" onclick="Check(8)">Cefotaxime</button></td>
-			<td><button id="button9" onclick="Check(9)">Cefepime</button></td>		
-			</tr>
-		<tr>
-			<td><button id="button10" onclick="Check(10)">Ceftazidime</button></td>
-			<td><button id="button11" onclick="Check(11)">Ceftriaxone</button></td>
-			<td><button id="button12" onclick="Check(12)">Ciprofloxacin</button></td>
-		</tr>
-		<tr>
-			<td><button id="button13" onclick="Check(13)">Clindamycin</button></td>
-			<td><button id="button14" onclick="Check(14)">Cloxacillin</button></td>
-			<td><button id="button15" onclick="Check(15)">Colistin</button></td>
-		</tr>
-		<tr>
-			<td><button id="button16" onclick="Check(16)">Cotrimoxazole</button></td>
-			<td><button id="button17" onclick="Check(17)">Cyclosporine</button></td>
-			<td><button id="button18" onclick="Check(18)">Diphenhydramine</button></td>
-		</tr>
-		<tr>
-			<td><button id="button19" onclick="Check(19)">Dobutamine</button></td>
-			<td><button id="button20" onclick="Check(20)">Dopamine</button></td>
-			<td><button id="button21" onclick="Check(21)">Fentanyl</button></td>
-		</tr>
-		<tr>
-			<td><button id="button22" onclick="Check(22)">Fluconazole</button></td>
-			<td><button id="button23" onclick="Check(23)">Furosemide</button></td>
-			<td><button id="button24" onclick="Check(24)">Heparin</button></td>
-		</tr>
-		<tr>
-			<td><button id="button25" onclick="Check(25)">Hydrocortisone sodium succinate</button></td>
-			<td><button id="button26" onclick="Check(26)">Imipenem</button></td>
-			<td><button id="button27" onclick="Check(27)">Insulin regular human</button></td>
-		</tr>
-		<tr>
-			<td><button id="button28" onclick="Check(28)">Kali chlorid (Potassium chloride)</button></td>
-			<td><button id="button29" onclick="Check(29)">Ketamine</button></td>
-			<td><button id="button30" onclick="Check(30)">Lidocaine</button></td>
-		</tr>
-		<tr>
-			<td><button id="button31" onclick="Check(31)">Linezolid</button></td>
-			<td><button id="button32" onclick="Check(32)">Magnesium sulfate</button></td>
-			<td><button id="button33" onclick="Check(33)">Meropenem</button></td>
-		</tr>
-		<tr>
-			<td><button id="button34" onclick="Check(34)">Methylprednisolone sodium succinate</button></td>
-			<td><button id="button35" onclick="Check(35)">Midazolam</button></td>
-			<td><button id="button36" onclick="Check(36)">Milrinone</button></td>
-		</tr>
-		<tr>
-			<td><button id="button37" onclick="Check(37)">Morphine</button></td>
-			<td><button id="button38" onclick="Check(38)">Sodium bicarbonate</button></td>
-			<td><button id="button39" onclick="Check(39)">Penicillin G sodium</button></td>
-		</tr>
-		<tr>
-			<td><button id="button40" onclick="Check(40)">Piperacillin-Tazobactam</button></td>
-			<td><button id="button41" onclick="Check(41)">Plasmalyte</button></td>
-			<td><button id="button42" onclick="Check(42)">Propofol</button></td>
-		</tr>
-		<tr>
-			<td><button id="button43" onclick="Check(43)">Ranitidine</button></td>
-			<td><button id="button44" onclick="Check(44)">Vancomycin</button></td>
-			<td><button id="button45" onclick="Check(45)">Vitamin K</button></td>
-		</tr>
-	</table>
+    <header class="sticky top-0 z-50 bg-brand-brown shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-extrabold text-white">Drinki T</a>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#menu" class="text-white hover:text-brand-red transition duration-200">Menu</a>
+                <a href="#promotions" class="text-white hover:text-brand-red transition duration-200">Khuyến Mãi</a>
+                <a href="#about" class="text-white hover:text-brand-red transition duration-200">Về Chúng Tôi</a>
+                <a href="#contact" class="text-white hover:text-brand-red transition duration-200">Liên Hệ</a>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                <span class="text-white text-lg font-semibold hidden sm:inline">078.6667333</span>
+                <button id="order-button" class="bg-brand-red text-white py-2 px-4 rounded-full font-bold hover:bg-red-700 transition duration-300">
+                    Đặt Hàng
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative h-[60vh] flex items-center justify-center text-center bg-cover bg-center" 
+             style="background-image: url('placeholder-hero.jpg');">
+        <div class="absolute inset-0 bg-black opacity-40"></div>
+        <div class="relative z-10 text-white p-6">
+            <h1 class="text-5xl sm:text-7xl font-bold mb-4 drop-shadow-lg">Ăn Đúng Chất - Uống Đúng Gu</h1>
+            <p class="text-xl sm:text-2xl mb-8">Trải nghiệm các món Coffee, Trà và Soda độc đáo.</p>
+            <a href="#menu" class="bg-brand-red text-white py-3 px-8 rounded-lg text-xl font-bold hover:bg-red-700 transition duration-300 shadow-xl">
+                Khám Phá Menu
+            </a>
+        </div>
+    </section>
+
+    <section id="menu" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-extrabold text-center text-brand-brown mb-12">⭐ Các Món Bán Chạy ⭐</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <div class="bg-brand-cream rounded-xl shadow-lg overflow-hidden text-center hover:shadow-xl transition duration-300">
+                    <img src="placeholder-coffee.jpg" alt="Cà Phê Muối" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-brand-brown mb-2">Cà Phê Muối</h3>
+                        <p class="text-lg text-gray-600 mb-4">Hương vị hiện đại, béo ngậy, khó cưỡng.</p>
+                        <span class="text-3xl font-extrabold text-brand-red">16K</span>
+                    </div>
+                </div>
+
+                <div class="bg-brand-cream rounded-xl shadow-lg overflow-hidden text-center hover:shadow-xl transition duration-300">
+                    <img src="placeholder-tea.jpg" alt="Trà Đào" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-brand-brown mb-2">Trà Đào Siêu Lớn</h3>
+                        <p class="text-lg text-gray-600 mb-4">Giải nhiệt hoàn hảo với topping trái cây.</p>
+                        <span class="text-3xl font-extrabold text-brand-red">25K</span>
+                    </div>
+                </div>
+
+                <div class="bg-brand-cream rounded-xl shadow-lg overflow-hidden text-center hover:shadow-xl transition duration-300">
+                    <img src="placeholder-soda.jpg" alt="Soda Blue Ocean" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-brand-brown mb-2">Soda Blue Ocean</h3>
+                        <p class="text-lg text-gray-600 mb-4">Sảng khoái bất tận, mát lạnh vị biển.</p>
+                        <span class="text-3xl font-extrabold text-brand-red">20K</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="bg-brand-brown text-white py-3 px-8 rounded-lg text-lg font-bold hover:bg-brand-red transition duration-300">
+                    Xem Toàn Bộ Menu
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="bg-brand-brown py-10">
+        <div class="max-w-7xl mx-auto px-4 text-center text-white">
+            <p>&copy; 2025 Drinki T. All rights reserved.</p>
+            <p class="mt-2">Liên hệ: 078.6667333 | Địa chỉ: [Địa chỉ Quán của bạn]</p>
+            <div class="mt-4 space-x-4">
+                <a href="#" class="text-white hover:text-brand-red">Facebook</a>
+                <a href="#" class="text-white hover:text-brand-red">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
-<script>
-	function Check(value) 
-	{
-		let config = 
-		[
-			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-		]
-		switch(value) {
-			case 1: config = [3,1,2,1,0,0,0,0,1,0,0,1,0,1,0,1,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,1,0,0,0,2,0,0,0,0,0,0,1];break;
-			case 2: config = [1,3,0,2,1,0,0,0,2,0,0,1,0,0,1,0,1,1,1,2,1,0,0,0,0,0,0,0,2,1,0,0,2,0,1,1,1,0,0,2,0,1,0,0,1];break;
-			case 3: config = [2,0,3,1,2,1,1,1,1,1,1,2,0,1,1,2,0,2,2,2,0,2,0,0,1,1,0,0,2,1,0,0,1,1,2,0,0,1,1,1,1,0,1,0,0];break;
-			case 4: config = [1,2,1,3,1,1,1,1,0,1,1,2,1,1,1,2,1,1,2,1,1,1,1,1,2,1,1,1,2,1,0,1,1,2,2,0,1,1,1,1,1,1,1,1,1];break;
-			case 5: config = [0,1,2,1,3,0,2,1,1,2,2,1,0,1,0,1,0,1,2,0,0,0,0,0,1,1,0,0,1,0,0,2,1,1,0,0,0,2,0,0,1,2,0,0,1];break;
-			case 6: config = [0,0,1,1,0,3,0,0,0,0,2,0,0,0,0,2,0,0,2,0,0,2,0,0,1,1,0,0,1,0,0,0,1,2,0,0,0,2,0,0,1,0,0,0,0];break;
-			case 7: config = [0,0,1,1,2,0,3,2,1,0,0,1,0,1,1,2,0,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,1,0,2,0];break;
-			case 8: config = [0,0,1,1,1,0,2,3,1,2,0,1,0,0,1,2,0,2,1,0,1,2,0,0,0,0,0,0,1,1,0,0,1,2,1,1,0,2,0,1,1,1,0,2,0];break;
-			case 9: config = [1,2,1,0,1,0,1,1,3,1,1,2,1,1,1,0,1,2,1,1,1,0,0,1,0,0,0,1,0,1,0,2,1,0,2,0,1,0,1,0,0,1,0,1,1];break;
-			case 10:config = [0,0,1,1,2,0,0,2,1,3,0,0,0,0,0,2,0,2,1,0,0,2,0,0,0,0,0,0,0,0,0,0,1,0,2,0,0,0,0,1,0,0,0,2,0];break;
-			case 11:config = [0,0,1,1,2,2,0,0,1,0,3,1,2,0,1,2,0,2,2,0,0,2,0,0,0,2,0,0,1,0,0,2,1,0,0,0,0,0,0,1,1,1,0,2,0];break;
-			case 12:config = [1,1,2,2,1,0,1,1,2,0,1,3,2,2,1,1,1,0,0,0,1,1,2,2,2,1,1,0,1,0,0,2,2,2,0,0,1,2,1,2,0,2,0,0,1];break;
-			case 13:config = [0,0,0,1,0,0,0,0,1,0,2,2,3,0,1,1,2,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0];break;
-			case 14:config = [1,0,1,1,1,0,1,0,1,0,0,2,0,3,0,2,0,2,1,0,1,0,0,0,0,1,0,0,1,1,1,0,0,0,1,1,1,0,0,0,0,1,0,1,1];break;
-			case 15:config = [0,1,1,1,0,0,1,1,1,0,1,1,1,0,3,1,1,1,1,1,1,1,0,0,0,0,1,0,1,0,0,1,0,1,1,1,1,1,0,0,1,1,1,0,1];break;
-			case 16:config = [1,0,2,2,1,2,2,2,0,2,2,1,2,2,1,3,1,2,1,2,1,2,2,2,2,2,2,2,2,1,0,0,1,2,1,1,0,2,2,0,1,1,2,2,2];break;
-			case 17:config = [0,1,0,1,0,0,0,0,1,0,0,1,0,0,1,1,3,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0];break;
-			case 18:config = [1,1,2,1,1,0,2,2,2,2,2,0,0,2,1,2,0,3,1,0,1,0,2,1,0,0,2,0,1,1,0,0,0,2,1,1,0,2,0,0,1,1,0,0,0];break;
-			case 19:config = [0,1,2,2,2,2,2,1,1,1,2,0,0,1,1,1,0,1,3,0,0,0,2,2,2,1,1,0,0,0,0,0,1,1,0,0,0,2,2,2,0,1,0,0,1];break;
-			case 20:config = [0,2,2,1,0,0,2,0,1,0,0,0,0,0,1,2,0,0,0,3,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0,0,0,2,0,0,0,0,0,0,0];break;
-			case 21:config = [0,1,0,1,0,0,0,1,1,0,0,1,0,1,1,1,0,1,0,0,3,0,0,0,0,0,0,0,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1];break;
-			case 22:config = [0,0,2,1,0,2,0,2,0,2,2,1,1,0,1,2,0,0,0,0,0,3,2,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];break;
-			case 23:config = [0,0,0,1,0,0,0,0,0,0,0,2,0,0,0,2,0,2,2,1,0,2,3,0,0,0,0,0,2,0,0,1,0,0,2,2,1,0,0,0,0,0,0,2,0];break;
-			case 24:config = [0,0,0,1,0,0,0,0,1,0,0,2,0,0,0,2,0,1,2,0,0,0,0,3,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0];break;
-			case 25:config = [0,0,1,2,1,1,0,0,0,0,0,2,0,0,0,2,0,0,2,0,0,0,0,0,3,0,0,0,0,0,0,0,1,1,2,1,0,0,0,0,1,0,0,1,0];break;
-			case 26:config = [0,0,1,1,1,1,0,0,0,0,2,1,0,1,0,2,0,0,1,0,0,1,0,0,0,3,0,0,1,0,0,0,0,0,1,2,0,2,0,1,1,0,0,1,0];break;
-			case 27:config = [1,0,0,1,0,0,0,0,0,0,0,1,0,0,1,2,1,2,1,1,0,0,0,0,0,0,3,0,2,0,0,0,0,1,0,0,0,0,0,2,1,0,0,0,0];break;
-			case 28:config = [0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0];break;
-			case 29:config = [0,2,2,2,1,1,0,1,0,0,1,1,0,1,1,2,1,1,0,0,1,1,2,2,0,1,2,0,3,1,1,0,2,1,0,0,0,2,0,0,1,0,0,1,1];break;
-			case 30:config = [0,1,1,1,0,0,0,1,1,0,0,0,0,1,0,1,0,1,0,0,0,0,0,0,0,0,0,0,1,3,0,0,1,1,0,2,0,2,0,0,1,1,0,0,1];break;
-			case 31:config = [0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,3,0,0,0,0,0,0,0,1,0,1,1,0,0,1];break;
-			case 32:config = [0,0,0,1,2,0,0,0,2,0,2,2,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,3,1,2,0,0,0,0,0,0,0,1,0,0,2];break;
-			case 33:config = [1,2,1,1,1,1,1,1,1,1,1,2,1,0,0,1,0,0,1,1,1,0,0,0,1,0,0,0,2,1,0,1,3,1,1,0,0,1,1,1,0,1,1,0,1];break;
-			case 34:config = [1,0,1,2,1,2,0,2,0,0,0,2,0,0,1,2,0,2,1,0,1,0,0,0,1,0,1,1,1,1,0,2,1,3,1,1,0,0,0,0,1,1,0,1,1];break;
-			case 35:config = [0,1,2,2,0,0,0,1,2,2,0,0,1,1,1,1,0,1,0,0,0,0,2,0,2,1,0,0,0,0,0,0,1,1,3,0,0,2,0,2,1,0,0,0,1];break;
-			case 36:config = [0,1,0,0,0,0,0,1,0,0,0,0,0,1,1,1,0,1,0,0,0,0,2,0,1,2,0,0,0,2,0,0,0,1,0,3,0,0,1,0,0,0,0,1,1];break;
-			case 37:config = [0,1,0,1,0,0,0,0,1,0,0,1,0,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,1,1,0,0,0];break;
-			case 38:config = [2,0,1,1,2,2,0,2,0,0,0,2,0,0,1,2,0,2,2,2,0,0,0,0,0,2,0,0,2,2,0,0,1,0,2,0,0,3,0,0,1,0,0,0,0];break;
-			case 39:config = [0,0,1,1,0,0,0,0,1,0,0,1,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,1,0,0,3,1,1,1,0,0,0];break;
-			case 40:config = [0,2,1,1,0,0,1,1,0,1,1,2,0,0,0,0,0,0,2,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,2,0,0,0,1,3,0,1,0,1,1];break;
-			case 41:config = [0,0,1,1,1,1,0,1,0,0,1,0,0,0,1,1,2,1,0,0,0,0,0,0,1,1,1,0,1,1,1,0,0,1,1,0,1,1,1,0,3,2,1,0,1];break;
-			case 42:config = [0,1,0,1,2,0,1,1,1,0,1,2,0,1,1,1,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,1,0,1,1,2,3,0,1,1];break;
-			case 43:config = [0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,3,0,0];break;
-			case 44:config = [0,0,0,1,0,0,2,2,1,2,2,0,0,1,0,2,0,0,0,0,0,0,2,2,1,1,0,0,1,0,0,0,0,1,0,1,0,0,0,1,0,1,0,3,0];break;
-			case 45:config = [1,1,0,1,1,0,0,0,1,0,0,1,0,1,1,2,0,0,1,0,1,0,0,0,0,0,0,0,1,1,1,2,1,1,1,1,0,0,0,1,1,1,0,0,3];break;
-			default:
-				break;
-		}
-		ChangeColor(config);
-	}
-	function ChangeColor(config) 
-	{
-		var colors = ["#00FF00","#FFFF00","#FF0000","#f0f0f0"]
-		for (let i = 0; i < config.length; ++i)
-		{
-			var index = i + 1;
-			var buttonId = "button" + index;
-			document.getElementById(buttonId).style.backgroundColor = colors[config[i]];
-		}
-	}
-	
-	var attempt = 4; // Variable to count number of attempts.
-	// Below function Executes on click of login button.
-	function validate() 
-	{
-		var username = document.getElementById("username").value;
-		var password = document.getElementById("password").value;
-		var validUserName = ["tuongvivi", "suongsuong", "hanhan","UyenLy"];
-		var validPassword = ["tuongvivi", "suongsuong", "hanhan","123"];
-		if (validUserName.includes(username) && validPassword.includes(password)) 
-		{
-			alert("Login successfully");
-			document.getElementById("form_id").style.display = 'none';
-			document.getElementById("table1").style.display='block';
-			return false;
-		} 
-		else 
-		{
-			attempt--; // Decrementing by one.
-			alert("You have left " + attempt + " attempt;");
-			// Disabling fields after 3 attempts.
-			if (attempt == 0) 
-			{
-				document.getElementById("username").disabled = true;
-				document.getElementById("password").disabled = true;
-				document.getElementById("submit").disabled = true;
-				return false;
-			}
-		}
-    }
-</script>
+</html>
